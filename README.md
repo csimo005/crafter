@@ -69,8 +69,6 @@ python3 -m crafter.run_gui      # Start the game
 
 </details>
 
-![Crafter Video](https://github.com/danijar/crafter/raw/main/media/video.gif)
-
 ## Interface
 
 To install Crafter, run `pip3 install crafter`. The environment follows the
