@@ -35,7 +35,6 @@ class Env(BaseClass):
     self._size = size
     self._reward = reward
     self._length = length
-    self._seed = seed
     self._episode = 0
     self._world = engine.World(area, constants.materials, (12, 12))
     self._textures = engine.Textures(constants.root / 'assets')
@@ -67,11 +66,11 @@ class Env(BaseClass):
   def action_names(self):
     return constants.actions
 
-  def reset(self):
+  def reset(self, seed=None):
     center = (self._world.area[0] // 2, self._world.area[1] // 2)
     self._episode += 1
     self._step = 0
-    self._world.reset(seed=hash((self._seed, self._episode)) % (2 ** 31 - 1))
+    self._world.reset(seed=(seed % (2 ** 31 - 1)) if seed else None)
     self._update_time()
     self._player = objects.Player(self._world, center)
     self._last_health = self._player.health

@@ -28,10 +28,12 @@ class World:
     self._chunk_size = chunk_size
     self._mat_names = {i: x for i, x in enumerate([None] + materials)}
     self._mat_ids = {x: i for i, x in enumerate([None] + materials)}
+    self.random = np.random.RandomState(None)
     self.reset()
 
   def reset(self, seed=None):
-    self.random = np.random.RandomState(seed)
+    if seed:
+        self.random = np.random.RandomState(seed)
     self.daylight = 0.0
     self._chunks = collections.defaultdict(set)
     self._objects = [None]
