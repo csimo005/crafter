@@ -108,7 +108,7 @@ def main():
           action = 'noop'
 
     # Environment step.
-    _, reward, done, _ = env.step(env.action_names.index(action))
+    _, reward, done, _, _ = env.step(env.action_names.index(action))
     duration += 1
 
     # Achievements.
